@@ -1,0 +1,63 @@
+$primary-color: #bf88e9;
+$secondary-color: #fdfcfd;
+$font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+$navbar-height: 60px; 
+$footer-height: 60px;
+$background-color: rgb(30, 30, 30);
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'phone' {
+    @media (max-width: 599px) { @content; }
+  }
+  @if $breakpoint == 'tablet' {
+    @media (min-width: 600px) and (max-width: 1199px) { @content; }
+  }
+  @if $breakpoint == 'desktop' {
+    @media (min-width: 1200px) { @content; }
+  }
+}
+
+
+body {
+  font-family: $font-stack;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(30, 30, 30);;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  @include respond-to('desktop') {
+    width: 80%;
+  }
+}
+
+/* For Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+  background-color: black; /* Background color of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $primary-color; /* Color of the inner bar */
+  border-radius: 10px; /* Rounded corners for a smoother look */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: $primary-color; /* Color of the inner bar on hover */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin; /* Make the scrollbar thinner */
+  scrollbar-color: $primary-color black; /* Inner bar color and scrollbar background color */
+}
+
+/* For IE and Edge */
+body {
+  scrollbar-face-color: $primary-color; /* Color of the inner bar */
+  scrollbar-track-color: black; /* Background color of the scrollbar */
+}
