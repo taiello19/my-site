@@ -1,0 +1,99 @@
+@import '../../styles.scss';
+
+nav {
+    user-select: none;
+    position: fixed;
+    top: 0;
+    left: 0; 
+    width: 100%;
+    background-color: $primary-color; 
+    color: white;
+    padding: 0.7rem 0;
+    z-index: 1000; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        margin: 0 auto;
+
+        @include respond-to('desktop') {
+            width: 80%;
+        }
+    }
+
+    .logo {
+        a {
+            text-decoration: none; 
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.3rem;
+            color: white; 
+            text-shadow: 
+                0 0 5px #000, 
+                0 0 10px #000, 
+                0 0 15px #000, 
+                0 0 20px #000, 
+                0 0 25px #000, 
+                0 0 30px #000; 
+
+            transition: color 0.3s, text-shadow 0.3s; 
+
+            &:hover {
+                color: black; 
+                cursor: pointer;
+                text-shadow: 
+                    0 0 5px #fff, 
+                    0 0 10px #fff, 
+                    0 0 15px #fff, 
+                    0 0 20px #fff, 
+                    0 0 25px #fff, 
+                    0 0 30px #fff; 
+            }
+        }
+    }
+
+    .nav-links {
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+
+            li {
+                margin-left: 1rem;
+
+                a {
+                    color: white;
+                    text-decoration: none; 
+                    &:hover {
+                        text-decoration: none; 
+                    }
+                }
+            }
+        }
+    }
+
+    .nav-icons {
+        display: flex;
+        align-items: center;
+
+        a {
+            margin-left: 2rem; //icon spacing
+            transition: transform 0.3s ease-in-out; //zoom speed
+
+            img {
+                width: 24px;
+                height: 24px;
+            }
+
+            &:hover {
+                transform: scale(1.4); //zoom in
+            }
+        }
+    }
+}
