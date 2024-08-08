@@ -32,7 +32,7 @@ export class MainComponent implements AfterViewInit {
       points: [
         'Designed and developed a website using Angular for Ottawa-based landscape architecture company Gja Inc.',
         'Worked with the client to elicit requirements and design/theme ideas.',
-        'Hosted the website on cPanel and am continuing support, maintenance, and updates',
+        'Hosted the website on cPanel and am continuing support, maintenance, and updates.',
       ],
       github: 'https://github.com/taiello19/GJA',
       image: 'assets/icons/gja.png'
@@ -51,11 +51,11 @@ export class MainComponent implements AfterViewInit {
     },
     {
       name: 'Forest Veil: Rogues Echo',
-      blurb: 'Deck-building Rogue-like game basesd on around a mysterious assassin and his battle with his emotional powers.',
+      blurb: 'Deck-building Rogue-like game based around a mysterious assassin and his battle with his emotional powers.',
       points: [
         'Designed and developped a full game using pygames.',
-        'Applied game design principles to allow for a well designed game balance wise, with a fun experience for the player.',
-        'Includes a fun and encapturing storyline for the user to stay interested.',
+        'Applied game design principles to allow for a well-designed game balance-wise, with a fun experience for the player.',
+        'Includes a fun and captivating storyline for the user to stay interested.',
         'Designed with replayability in mind for better user experience.'
       ],
       github: 'https://github.com/taiello19/Forest-Veil-Rogues-Echo',
@@ -63,7 +63,7 @@ export class MainComponent implements AfterViewInit {
     },
     {
       name: 'Client Server Black Jack',
-      blurb: 'A fun game of black jack made in C# using the Client-Server model to allow multiple users.',
+      blurb: 'A fun game of black jack made in C++ using the Client-Server model to allow multiple users.',
       points: [
         'Using sockets and threads implemented through C++ designed a client and server-based card game.',
         'Allowed multiple clients to open connections to the server and play the game at the same time.',
