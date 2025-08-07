@@ -62,15 +62,14 @@ export class MainComponent implements AfterViewInit {
       image: 'assets/icons/fvre.ico'
     },
     {
-      name: 'Client Server Black Jack',
-      blurb: 'A fun game of black jack made in C++ using the Client-Server model to allow multiple users.',
+      name: 'BiteWise AI',
+      blurb: 'A calorie counting app that uses AI to assist in tracking calories.',
       points: [
-        'Using sockets and threads implemented through C++ designed a client and server-based card game.',
-        'Allowed multiple clients to open connections to the server and play the game at the same time.',
-        'The server had a unique session for each client and was able to send and receive data.',
+        'Using image captioning software to recognize the food in a given image to better estimate a meals calories',
+        'Simple and effective user interface that allows users to easily track workouts and meals',
+        'Using NLP AI to also understand and predict calories based on a meal description',
       ],
-      github: 'https://github.com/taiello19/Csharp-Card-Game',
-      image: 'assets/icons/cards.png'
+      image: 'assets/icons/bitewiseai.png'
     },
     // more project items can be added here
   ];
