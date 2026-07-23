@@ -26,55 +26,40 @@ nav {
 
     .logo {
         a {
-            text-decoration: none; 
+            text-decoration: none;
         }
 
         h1 {
             margin: 0;
             font-size: 1.3rem;
-            color: white; 
-            text-shadow: 
-                0 0 5px #000, 
-                0 0 10px #000, 
-                0 0 15px #000, 
-                0 0 20px #000, 
-                0 0 25px #000, 
-                0 0 30px #000; 
-
-            transition: color 0.3s, text-shadow 0.3s; 
+            font-weight: 600;
+            color: white;
+            transition: color 0.2s;
 
             &:hover {
-                color: black; 
+                color: #1e1e1e;
                 cursor: pointer;
-                text-shadow: 
-                    0 0 5px #fff, 
-                    0 0 10px #fff, 
-                    0 0 15px #fff, 
-                    0 0 20px #fff, 
-                    0 0 25px #fff, 
-                    0 0 30px #fff; 
             }
         }
     }
 
     .nav-links {
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
+        display: flex;
+        gap: 1.75rem;
 
-            li {
-                margin-left: 1rem;
+        a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
 
-                a {
-                    color: white;
-                    text-decoration: none; 
-                    &:hover {
-                        text-decoration: none; 
-                    }
-                }
+            &:hover {
+                color: #1e1e1e;
             }
+        }
+
+        @media (max-width: 600px) {
+            display: none;
         }
     }
 

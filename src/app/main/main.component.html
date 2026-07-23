@@ -1,143 +1,116 @@
 <div class="main">
   <section id="home" class="home-section">
     <div class="home-content">
-      <img src="assets/icons/japan.jpg" alt="Home Image" class="home-image">
-      <h1 class="home-title">Welcome to My Website</h1>
-      <p class="home-subtitle">Scroll down to learn more about me</p>
-      <div class="home-links">
-        <a href="#about">About Me</a>
-        <a href="#skills">Skills</a>
-        <a href="#work-experience">Work Experience</a>
-        <a href="#projects">Projects</a>
+      <div class="home-text">
+        <p class="home-eyebrow">Software Engineer</p>
+        <h1 class="home-title">Hi, I'm Thomas — I design and build software.</h1>
+        <p class="home-subtitle">
+          I'm a software engineer based in Ottawa who enjoys taking software from an idea
+          through to deployment. What draws me in is the problem-solving &mdash; working out
+          how a system should fit together, then learning whatever I need to build it properly.
+          I've worked across backend, frontend, and AI, and I'm currently looking for
+          opportunities to take on harder problems and keep growing as an engineer.
+        </p>
+        <div class="home-cta">
+          <a href="#projects" class="btn btn-primary">View my work</a>
+          <a href="#contact" class="btn btn-secondary">Get in touch</a>
+        </div>
+        <div class="home-tags">
+          <span>Python</span>
+          <span>JavaScript / TypeScript</span>
+          <span>Angular / React</span>
+          <span>C / C++</span>
+          <span>SQL</span>
+          <span>AWS</span>
+        </div>
+      </div>
+      <div class="home-aside">
+        <img src="assets/icons/japan.jpg" alt="Thomas Aiello" class="home-image">
+        <div class="about-education">
+          <div class="about-blurb-header">
+            <img src="assets/icons/western.png" alt="Western University" class="small-square-image">
+            <div>
+              <p class="about-blurb-text">B.E.Sc. Software Engineering</p>
+              <p class="about-edu-meta">Western University &middot; Class of 2024</p>
+            </div>
+          </div>
+          <ul class="about-credentials">
+            <li>Dean's Honor List &mdash; 2022&ndash;23 and 2023&ndash;24</li>
+            <li>ISC2 Certified in Cybersecurity</li>
+            <li>Fluent in English, proficient in French</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="about">
-    <div class="about-header-container">
-        <h1 class="about-title">About Me</h1>
-        <h2 class="about-subtitle">Welcome to my personal website! Here is a bit about me...</h2>
-    </div>
-    <div class="about-content">
-        <img src="assets/icons/grad.jpg" alt="Profile Picture" class="profile-picture">
-        <div class="about-text-container">
-            <div class="about-blurb-header">
-                <p class="about-blurb-text">B.E.Sc. in Software Engineering at Western University</p>
-                <img src="assets/icons/western.png" alt="western" class="small-square-image">
-            </div>
-            <p class="about-text">
-              Hi, my name is Thomas, and I am a graduate from the University of Western Ontario, class of 2024, with a Bachelor's degree in Software Engineering.
-              A little bit about me: I have always had a passion for sports, enjoying activities like hockey, volleyball, and many others. 
-              Alongside sports, I have always had a love for computers and technology.
-               During my time at school, I developed a keen interest in coding, combining my love for computers with my career aspirations. 
-               Now, I am excited to continue growing as a software developer and to keep creating. Check out my projects section to see some of the cool things I've done!
-            </p>
-        </div>
-    </div>
-</section>
-  
   <section id="skills">
       <div class="skills-header-container">
           <h1 class="skills-title">Skills</h1>
-          <h2 class="skills-header">Here are some of my skills...</h2>
       </div>
       <div class="skills-container">
-          <div class="skills-carousel" #carousel>
-              <div class="skill-item">
-                  <img src="assets/icons/pytorch.png" alt="PyTorch">
-                  <p>PyTorch</p>
-              </div>
-              <div class="skill-item">
-                  <img src="assets/icons/python.png" alt="Python">
-                  <p>Python</p>
-              </div>
-              <div class="skill-item">
-                  <img src="assets/icons/gcp.png" alt="GCP">
-                  <p>GCP</p>
-              </div>
-              <div class="skill-item">
-                  <img src="assets/icons/java.png" alt="Java">
-                  <p>Java</p>
-              </div>
-              <div class="skill-item">
-                  <img src="assets/icons/aws.png" alt="AWS">
-                  <p>AWS</p>
-              </div>
-              <div class="skill-item">
-                  <img src="assets/icons/angular.png" alt="Angular">
-                  <p>Angular</p>
-              </div>
-              <div class="skill-item">
-                  <img src="assets/icons/javascript.png" alt="JavaScript">
-                  <p>JavaScript</p>
-              </div>
-              <div class="skill-item">
-                  <img src="assets/icons/sql.png" alt="SQL">
-                  <p>SQL</p>
-              </div>
-              <div class="skill-item">
-                  <img src="assets/icons/csharp.png" alt="C#">
-                  <p>C#</p>
-              </div>
-              <div class="skill-item">
-                  <img src="assets/icons/react.png" alt="React">
-                  <p>React</p>
-              </div>
-              <div class="skill-item">
-                  <img src="assets/icons/pandas.png" alt="Pandas">
-                  <p>Pandas</p>
-              </div>
-              <div class="skill-item">
-                  <img src="assets/icons/html.png" alt="HTML">
-                  <p>HTML</p>
-              </div>
-              <div class="skill-item">
-                  <img src="assets/icons/node.png" alt="Node.js">
-                  <p>Node.js</p>
-              </div>
-              <div class="skill-item">
-                  <img src="assets/icons/git.png" alt="Git">
-                  <p>Git</p>
+          <div class="skill-group" *ngFor="let group of skillGroups">
+              <h3 class="skill-group-title">{{ group.title }}</h3>
+              <div class="skill-grid">
+                  <div class="skill-item" *ngFor="let skill of group.skills">
+                      <img *ngIf="skill.image" [src]="skill.image" [alt]="skill.name">
+                      <p>{{ skill.name }}</p>
+                  </div>
               </div>
           </div>
-          <div class="border"></div>
       </div>
   </section>
   
 <section id="work-experience">
     <div class="work-experience-header-container">
         <h1 class="work-experience-title">Work Experience</h1>
-        <h2 class="work-experience-subtitle">My work experience includes...</h2>
     </div>
     <div class="work-experience-content">
         <div class="work-experience-item">
-            <img src="assets/icons/innovapost2.jpg" alt="Company Logo" class="work-experience-image">
+            <img src="assets/icons/ivey.png" alt="Ivey Business School Foundation logo" class="work-experience-image" (error)="onLogoError($event)">
             <div class="work-experience-details">
-                <h3 class="work-experience-name">Innovapost - Software Developer</h3>
+                <h3 class="work-experience-name">Ivey Business School Foundation - Software Engineering Associate</h3>
+                <p class="work-experience-meta">London, ON &middot; August 2025 &ndash; July 2026</p>
                 <p class="work-experience-blurb">
-                  As a Student Developer at Innovapost, I contributed to team success through daily scrums, front-end development, and documentation in an Agile environment, enhancing team efficiency.
+                  Contributed across the full software development lifecycle — backend architecture, database engineering, AI integration, frontend development, and production deployment.
                 </p>
                 <ul class="work-experience-points">
-                    <li>Worked in an Agile environment with daily scrums focused on constant updates</li>
-                    <li>Creating a local repository setup guide to streamline the process for future developers</li>
-                    <li>Assisted in the testing and quality assurance process for the Canada Post website</li>
-                    <li>Actively participated in the development of the front-end codebase</li>
+                    <li>Awarded first place at the FOME Learning Design and Innovation Awards for developing innovative AI-powered educational technology</li>
+                    <li>Shipped AIBEL, an AI-powered case-study discussion platform used by Ivey students for text and voice conversations with AI instructor and peer personas</li>
+                    <li>Built the real-time voice experience on the Gemini Live API with low-latency audio streaming and per-user session isolation under concurrent load</li>
+                    <li>Architected a WebSocket layer with a Redis message bus to support multi-user live discussions and scale audio sessions horizontally</li>
+                    <li>Delivered end-to-end across Python/Flask, Angular, and SQL — schema, APIs, frontend, and production deploys — iterating on real classroom feedback</li>
                 </ul>
             </div>
         </div>
 
         <div class="work-experience-item">
-            <img src="assets/icons/hydro.png" alt="Company Logo" class="work-experience-image">
+            <img src="assets/icons/hydro.png" alt="Hydro Ottawa logo" class="work-experience-image">
             <div class="work-experience-details">
                 <h3 class="work-experience-name">Hydro Ottawa - Accounts Receivable Assistant</h3>
+                <p class="work-experience-meta">Ottawa, ON &middot; October 2024 &ndash; Present</p>
                 <p class="work-experience-blurb">
-                  As an Accounts Receivable Assistant at Hydro Ottawa, I leveraged my technical skills to automate and optimize financial processes, contributing to enhanced efficiency and accuracy within the department.
+                  Used my technical skills to automate and optimize financial processes, improving efficiency and accuracy within the department.
                 </p>
                 <ul class="work-experience-points">
-                    <li>Developed and implemented Google Sheets scripts to eliminate manual tasks, drastically improving efficiency and reducing errors</li>
+                    <li>Developed and implemented Google Sheets scripts to eliminate manual tasks, improving efficiency and reducing errors</li>
                     <li>Identified opportunities for optimization and created scripts to enhance process flow across the department</li>
-                    <li>Accurately handled transfers of payments to accounts and ensured timely processing</li>
-                    <li>Assisted in various administrative and financial tasks, fostering team collaboration and operational excellence</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="work-experience-item">
+            <img src="assets/icons/innovapost2.jpg" alt="Innovapost logo" class="work-experience-image">
+            <div class="work-experience-details">
+                <h3 class="work-experience-name">Innovapost - Software Developer</h3>
+                <p class="work-experience-meta">Ottawa, ON &middot; Summer 2023</p>
+                <p class="work-experience-blurb">
+                  Contributed to an Agile team through daily scrums, front-end development, and documentation.
+                </p>
+                <ul class="work-experience-points">
+                    <li>Actively participated in the development of the front-end codebase</li>
+                    <li>Assisted in the testing and quality assurance process for the Canada Post website</li>
+                    <li>Created a local repository setup guide to streamline onboarding for future developers</li>
                 </ul>
             </div>
         </div>
@@ -152,24 +125,52 @@
 <section id="projects">
   <div class="projects-header-container">
     <h1 class="projects-title">Projects</h1>
-    <h2 class="projects-subtitle">Check out my projects...</h2>
+    <h2 class="projects-subtitle">A few things I've built</h2>
   </div>
-  <div class="projects-content">
-    <div class="project-item" *ngFor="let project of projects; let i = index" (click)="toggleProject(i)" [class.clicked]="expandedProjectIndex === i">
-      <div class="project-header">
-        <img [src]="project.image" alt="Project Logo" class="project-image">
-        <h3 class="project-name">{{ project.name }}</h3>
+  <ng-template #projectCard let-project>
+    <article class="project-card" [class.featured]="project.featured">
+      <div class="project-thumb">
+        <img *ngIf="project.image" [src]="project.image" [alt]="project.name + ' logo'" (error)="onProjectImageError(project)">
+        <span *ngIf="!project.image" class="project-wordmark">{{ project.wordmark }}</span>
       </div>
-      <div class="project-details" [class.expanded]="expandedProjectIndex === i">
+      <div class="project-body">
+        <div class="project-title-row">
+          <span *ngIf="project.featured" class="project-badge">Featured</span>
+          <h3 class="project-name">{{ project.name }}</h3>
+        </div>
         <p class="project-blurb">{{ project.blurb }}</p>
         <ul class="project-points">
           <li *ngFor="let point of project.points">{{ point }}</li>
         </ul>
+        <div class="project-tags">
+          <span *ngFor="let tag of project.tags">{{ tag }}</span>
+        </div>
         <div class="project-links">
-          <a *ngIf="project.github" [href]="project.github" target="_blank">GitHub</a>
-          <a *ngIf="project.youtube" [href]="project.youtube" target="_blank">YouTube</a>
+          <a *ngIf="project.live" [href]="project.live" target="_blank" rel="noopener">
+            Visit site &#8599;
+          </a>
+          <a *ngIf="project.article" [href]="project.article" target="_blank" rel="noopener">
+            Award announcement &#8599;
+          </a>
+          <a *ngIf="project.github" [href]="project.github" target="_blank" rel="noopener">
+            <img src="assets/icons/github.png" alt="" class="link-icon"> GitHub
+          </a>
+          <a *ngIf="project.youtube" [href]="project.youtube" target="_blank" rel="noopener">
+            Demo
+          </a>
         </div>
       </div>
+    </article>
+  </ng-template>
+
+  <div class="projects-content">
+    <ng-container *ngFor="let project of featuredProjects">
+      <ng-container *ngTemplateOutlet="projectCard; context: { $implicit: project }"></ng-container>
+    </ng-container>
+    <div class="projects-grid">
+      <ng-container *ngFor="let project of gridProjects">
+        <ng-container *ngTemplateOutlet="projectCard; context: { $implicit: project }"></ng-container>
+      </ng-container>
     </div>
   </div>
 </section>

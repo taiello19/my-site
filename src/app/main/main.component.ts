@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,84 +8,126 @@ import { CommonModule } from '@angular/common';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements AfterViewInit {
-  @ViewChild('carousel') carousel!: ElementRef;
-  expandedProjectIndex: number | null = null; 
+export class MainComponent {
   showScrollToTop: boolean = false;
+
+  skillGroups = [
+    {
+      title: 'Languages',
+      skills: [
+        { name: 'Python', image: 'assets/icons/python.png' },
+        { name: 'JavaScript / TypeScript', image: 'assets/icons/javascript.png' },
+        { name: 'C / C++', image: '' },
+        { name: 'SQL', image: 'assets/icons/sql.png' },
+      ]
+    },
+    {
+      title: 'Frameworks & Libraries',
+      skills: [
+        { name: 'Angular', image: 'assets/icons/angular.png' },
+        { name: 'React', image: 'assets/icons/react.png' },
+        { name: 'Node.js', image: 'assets/icons/node.png' },
+        { name: 'Flask', image: '' },
+        { name: 'PyTorch', image: 'assets/icons/pytorch.png' },
+        { name: 'TensorFlow', image: '' },
+        { name: 'Pandas', image: 'assets/icons/pandas.png' },
+      ]
+    },
+    {
+      title: 'Cloud & Tools',
+      skills: [
+        { name: 'AWS', image: 'assets/icons/aws.png' },
+        { name: 'GCP', image: 'assets/icons/gcp.png' },
+        { name: 'Git', image: 'assets/icons/git.png' },
+        { name: 'Linux / Unix', image: '' },
+        { name: 'REST APIs', image: '' },
+      ]
+    },
+  ];
 
 
   projects = [
     {
-      name: 'Bell Artificial Intelligence Technician',
-      blurb: 'Custom-built multi-modal language model used to troubleshoot various problems users of Bell Canada products may face.',
+      name: 'AIBEL',
+      featured: true,
+      wordmark: 'AIBEL',
+      blurb: 'An AI-powered case-study discussion platform used by Ivey Business School students to hold text and voice conversations with AI instructor and peer personas. Built at the Ivey Business School Foundation.',
       points: [
-        'Supports sending text, photos, and PDFs, then analyzes customer concerns to provide relevant and helpful responses to users.',
-        'This project was made in collaboration with Bell Canada to reduce the training time needed for their internet technicians and also to prototype a customer-facing support agent.'
+        'Awarded first place at the FOME Learning Design and Innovation Awards.',
+        'Real-time voice built on the Gemini Live API with low-latency audio streaming and per-user session isolation under concurrent load.',
+        'WebSocket layer backed by a Redis message bus for multi-user live discussions that scale audio sessions horizontally.',
+        'Response-grounding layer — document retrieval plus parallel LLM passes for classification, learning-goal evaluation, and lesson progression — to reduce hallucinations.',
       ],
+      tags: ['Python', 'Flask', 'Angular', 'Gemini Live API', 'Redis', 'WebSockets'],
+      live: 'https://aibel.ivey.ca/',
+      article: 'https://www.ivey.uwo.ca/news/news-ivey/2026/january/ivey-wins-international-learning-design-award-for-ai-boosted-case-learning-tool/',
+      image: 'assets/icons/ivey.png'
+    },
+    {
+      name: 'Bell AI Technician',
+      featured: false,
+      blurb: 'A custom multi-modal language model built in collaboration with Bell Canada to troubleshoot issues customers face with Bell products.',
+      points: [
+        'Accepts text, photos, and PDFs, then analyzes the customer concern to provide relevant, helpful support responses.',
+        'Built to reduce the training time needed for Bell internet technicians and to prototype a customer-facing support agent.'
+      ],
+      tags: ['PyTorch', 'Python', 'Multi-modal LLM'],
       github: 'https://github.com/taiello19/bait',
       youtube: 'https://www.youtube.com/watch?v=xYl0aiNbgQg&t=4s',
       image: 'assets/icons/bait.png'
     },
     {
       name: 'GJA Inc Website',
-      blurb: 'Custom built website for Ottawa based landscape architecture company GJA Inc.',
+      featured: false,
+      blurb: 'A production website for Ottawa-based landscape architecture company GJA Inc.',
       points: [
-        'Designed and developed a website using Angular for Ottawa-based landscape architecture company Gja Inc.',
-        'Worked with the client to elicit requirements and design/theme ideas.',
-        'Hosted the website on cPanel and am continuing support, maintenance, and updates.',
+        'Designed and developed the site in Angular, working directly with the client to elicit requirements and design ideas.',
+        'Hosted on cPanel, with ongoing support, maintenance, and updates.',
       ],
+      tags: ['Angular', 'cPanel'],
       github: 'https://github.com/taiello19/GJA',
       image: 'assets/icons/gja.png'
     },
     {
       name: 'UWOutlines',
-      blurb: 'Course outline editing system with account creation and ChatGPT integration.',
+      featured: false,
+      blurb: 'A course-outline editing system with account creation and ChatGPT integration.',
       points: [
-        'Allowed users to login and create accounts using a SQL database for storage',
-        'ChatGPT integration to allow users to get live suggestions from ChatGPT to improve editing quality',
-        'Allow users different access levels to the site based on permission level',
-        'Ability to choose from a variety of different themes for the website.',
+        'Login and account creation backed by a SQL database.',
+        'ChatGPT integration giving users live suggestions to improve editing quality.',
+        'Role-based access levels and multiple selectable site themes.',
       ],
+      tags: ['SQL', 'OpenAI API'],
       youtube: 'https://www.youtube.com/watch?v=WsDy3XwIQYc&t=2s',
-      image: 'assets/icons/western.png'
+      image: 'assets/icons/uwoutline.png'
     },
     {
-      name: 'Forest Veil: Rogues Echo',
-      blurb: 'Deck-building Rogue-like game based around a mysterious assassin and his battle with his emotional powers.',
+      name: 'Image Captioning AI Model',
+      featured: false,
+      wordmark: 'ML',
+      blurb: 'A deep-learning model that generates natural-language captions for images.',
       points: [
-        'Designed and developped a full game using pygames.',
-        'Applied game design principles to allow for a well-designed game balance-wise, with a fun experience for the player.',
-        'Includes a fun and captivating storyline for the user to stay interested.',
-        'Designed with replayability in mind for better user experience.'
+        'Reviewed current captioning approaches across CNN, RNN, and Transformer architectures.',
+        'Used transfer learning from pre-trained image recognition models to boost performance.',
+        'Built a training pipeline in TensorFlow and PyTorch with data augmentation and hyperparameter tuning.',
       ],
-      github: 'https://github.com/taiello19/Forest-Veil-Rogues-Echo',
-      image: 'assets/icons/fvre.ico'
+      tags: ['TensorFlow', 'PyTorch', 'Python'],
+      image: ''
     },
     {
       name: 'BiteWise AI',
-      blurb: 'A calorie counting app that uses AI to assist in tracking calories.',
+      featured: false,
+      blurb: 'A calorie-counting app that uses AI to help track meals.',
       points: [
-        'Using image captioning software to recognize the food in a given image to better estimate a meals calories',
-        'Simple and effective user interface that allows users to easily track workouts and meals',
-        'Using NLP AI to also understand and predict calories based on a meal description',
+        'Uses image captioning to recognize food in a photo and better estimate a meal\'s calories.',
+        'NLP-based estimation that predicts calories from a text description of a meal.',
+        'Simple, effective interface for tracking workouts and meals.',
       ],
+      tags: ['NLP', 'Computer vision'],
       image: 'assets/icons/bitewiseai.png'
     },
     // more project items can be added here
   ];
-
-  ngAfterViewInit(): void {
-    const carouselElement = this.carousel.nativeElement;
-    const images = Array.from(carouselElement.querySelectorAll('img')) as HTMLImageElement[];
-
-    images.forEach(img => {
-      const clone = img.cloneNode(true) as HTMLImageElement;
-      carouselElement.appendChild(clone);
-    });
-
-    const totalWidth = images.length * (images[0].width + 40); 
-    carouselElement.style.width = `${totalWidth * 2}px`; 
-  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -96,13 +138,21 @@ export class MainComponent implements AfterViewInit {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  toggleProject(index: number): void {
-    if (window.innerWidth > 500) { 
-      if (this.expandedProjectIndex === index) {
-        this.expandedProjectIndex = null;
-      } else {
-        this.expandedProjectIndex = index;
-      }
-    }
+  get featuredProjects() {
+    return this.projects.filter(p => p.featured);
+  }
+
+  get gridProjects() {
+    return this.projects.filter(p => !p.featured);
+  }
+
+  // If a logo file is missing, fall back to the card's text wordmark.
+  onProjectImageError(project: { image: string }): void {
+    project.image = '';
+  }
+
+  // If a company logo is missing, fall back to the Western crest.
+  onLogoError(event: Event): void {
+    (event.target as HTMLImageElement).src = 'assets/icons/western.png';
   }
 }
